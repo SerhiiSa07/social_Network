@@ -1,0 +1,21 @@
+.nav{
+    grid-area: n;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(67,253,45,1) 100%);
+    padding: 10px;
+    line-height: 50px;
+
+}
+
+.item{
+    color: red;
+}
+
+.item a {
+    color: black;
+    text-decoration: none;
+}
+
+.item a:active{
+    color:#3366FF;
+}

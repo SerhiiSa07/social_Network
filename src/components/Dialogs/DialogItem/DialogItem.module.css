@@ -1,0 +1,13 @@
+
+.dialogsItems{
+    padding: 20px;
+    line-height: 40px;
+}
+.dialogsItems .active{
+    color: red;
+}
+.dialogsImage1 img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}

@@ -1,0 +1,19 @@
+
+.messages{
+    padding: 30px;
+    line-height: 40px;
+
+}
+
+.message{
+
+}
+.messageImage2 img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    float: right;
+}
+.messageImage2{
+    padding: 0 0 0 600px;
+}

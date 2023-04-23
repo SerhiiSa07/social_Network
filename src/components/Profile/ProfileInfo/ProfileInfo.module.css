@@ -1,0 +1,23 @@
+.descriptionBlock{
+    padding: 10px;
+}
+.profileBlock{
+
+}
+.wrapperBlock{
+
+}
+.imageBlock{
+    text-align: center;
+}
+.imageBlock img
+{
+    margin-top: -75px;
+    width: 150px;
+    height: 150px;
+}
+.imageBlockHeader{
+}
+.imageBlockHeader img{
+
+}

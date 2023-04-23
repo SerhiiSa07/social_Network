@@ -1,0 +1,13 @@
+.header{
+    grid-area: h;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(93,45,253,1) 100%);
+}
+.header img {
+    width: 90px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.item {
+    color: red;
+}
