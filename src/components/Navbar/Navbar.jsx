@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
+import Friends from "../Friends/Friend";
 
 
 const Navbar = () => {
@@ -26,6 +27,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
+            <Friends/>
         </nav>
     )
 };

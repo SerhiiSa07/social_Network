@@ -23,14 +23,15 @@ let state = {
                 {id: 5, message: 'Yes'}
             ],
         },
-    sidebar:
+    /*sidebar:
         {
-            friends: [
-                {id: 1, name: 'Dem'},
-                {id: 2, name: 'Flop'},
-                {id: 3, name: 'Fes'}
-            ],
-        },
+        friends: [
+            {id: 1, name: 'Dem'},
+            {id: 2, name: 'Flop'},
+            {id: 3, name: 'Fes'}
+        ]
+    },*/
+
 }
 
 

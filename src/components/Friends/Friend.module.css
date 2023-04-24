@@ -1,0 +1,51 @@
+.titlesName{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: #003333;
+}
+
+.circle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.circle1
+{
+    width: 20px;
+    height: 20px;
+    background: #5489bf;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.circle2{
+    width: 20px;
+    height: 20px;
+    background: #79bf54;
+    border-radius: 50%;
+    margin: 10px;
+}
+.circle3{
+    width: 20px;
+    height: 20px;
+    background: #ad1b1b;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.titleName{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.titleName1{
+    margin: 10px;
+}
+.titleName2{
+    margin: 10px;
+}
+.titleName3{
+    margin: 10px;
+}

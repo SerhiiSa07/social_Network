@@ -7,8 +7,9 @@ import Profile from "./components/Profile/Profile";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
-import {HashRouter, Route, Switch} from "react-router-dom";
-import Friend from "./components/Friends/Friend";
+import {HashRouter, NavLink, Route, Switch} from "react-router-dom";
+
+
 
 const App = (props:any) => {
 
@@ -19,12 +20,12 @@ const App = (props:any) => {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Switch>
-                        <Route path='/profile' render={() => <Profile state={props.stateApp.profilePage} /> } />
-                        <Route path='/messages' render={() => <Dialogs state={props.stateApp.dialogPage} /> } />
+                        <Route path='/profile' render={() => <Profile state={props.state.profilePage} /> } />
+                        <Route path='/messages' render={() => <Dialogs state={props.state.dialogPage} /> } />
                         <Route path='/news' component={News}/>
                         <Route path='/music' component={Music}/>
                         <Route path='/settings' component={Settings}/>
-                        <Route path='/friends' render={() => <Friend state={props.stateApp.sidebar}/> } />
+                        {/*<Route path='/friends' render={() =><Friends state={props.state.sidebar}/>} />*/}
                     </Switch>
                 </div>
             </div>

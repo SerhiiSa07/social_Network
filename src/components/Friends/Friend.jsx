@@ -1,24 +1,48 @@
-import React from 'react';
-import s from './Friend.module.css';
 import {NavLink} from "react-router-dom";
+import l from "./Friend.module.css";
+import React from "react";
 
 
-const Friend = (props) => {
-
-    let dialogsElements = props.state.friends.map(f => <Friend name={f.name} id={f.id}/>);
+/*
+const Friends = (props) => {
+    let friendsElements = props.state.friends.map(f => <Friends id={f.id} name={f.name}/>);
     let path = '/friends' + props.id;
 
     return (
         <div>
             <div>
-                <div className={s.friendsTitle}>
-                    <NavLink to={path}>{props.name}</NavLink>
-                </div>
+                <NavLink to={path}>{props.name}</NavLink>
+                <NavLink to='/friends' activeClassName={l.active}>Friends</NavLink>
             </div>
-            <div className={s.nameTitle}>
-                {dialogsElements}
+            <div>
+                {friendsElements}
             </div>
         </div>
     )
-};
-export default Friend;
+}
+*/
+
+
+
+const Friends = () => {
+    return (
+
+        <div>
+            <div className={l.titlesName}>
+                Friends
+            </div>
+            <div className={l.circle}>
+                <div className={l.circle1}></div>
+                <div className={l.circle2}></div>
+                <div className={l.circle3}></div>
+            </div>
+            <div className={l.titleName}>
+                <div className={l.titleName1}>Dem</div>
+                <div className={l.titleName2}>Flop</div>
+                <div className={l.titleName3}>Fes</div>
+            </div>
+        </div>
+)
+}
+
+export default Friends
