@@ -25,11 +25,14 @@ let state = {
         },
     /*sidebar:
         {
+        friend: [
+            {id: 1, name: 'Friends'},
+            ],
         friends: [
             {id: 1, name: 'Dem'},
             {id: 2, name: 'Flop'},
             {id: 3, name: 'Fes'}
-        ]
+        ],
     },*/
 
 }

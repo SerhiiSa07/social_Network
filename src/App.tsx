@@ -14,7 +14,6 @@ import {HashRouter, NavLink, Route, Switch} from "react-router-dom";
 const App = (props:any) => {
 
     return (
-        <HashRouter>
             <div className='app-wrapper'>
                 <Header/>
                 <Navbar/>
@@ -29,7 +28,6 @@ const App = (props:any) => {
                     </Switch>
                 </div>
             </div>
-        </HashRouter>
     )
 }
 
