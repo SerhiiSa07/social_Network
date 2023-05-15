@@ -7,10 +7,9 @@ import Profile from "./components/Profile/Profile";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
-import {HashRouter, NavLink, Route, Switch} from "react-router-dom";
-import {updateNewPostText} from "./redux/state";
+import {HashRouter, Route, Switch} from "react-router-dom";
 
-const App = (props:any) => {
+const App = (props: { state: { profilePage: any; dialogPage: any; }; addPost: any; updateNewPostText: any; }) => {
 
     return (
             <div className='app-wrapper'>
