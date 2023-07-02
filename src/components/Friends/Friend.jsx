@@ -7,6 +7,7 @@ import Message from "../Dialogs/Message/Messages";
 /*let friendElements = props.state.friend.map(d => <Friends name={d.name} id={d.id}/>);
 let messagesElements = props.state.messages.map(m => <Message message={m.message}/>);*/
 /*
+
 const Friends = () => {
     return (
 
@@ -27,6 +28,7 @@ const Friends = () => {
         </div>
 )
 }
+
 */
 
 
