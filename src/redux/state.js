@@ -41,13 +41,18 @@ let store = {
         },*/
 
     },
+    _callSubscribe () {
+        console.log('State changed');
+    },
+
     getState(){
         return this._state;
     },
-    _callSubscribe () {
-    console.log('State changed');
+    subscribe (observer) {
+        this._callSubscribe = observer;
     },
-    addPost () {
+
+    /*addPost () {
         let newPost = {
             id: 5,
             message: this._state.profilePage.newPostText,
@@ -60,10 +65,24 @@ let store = {
     updateNewPostText (newText) {
         this._state.profilePage.newPostText = newText;
         this._callSubscribe(this._state);
-    },
-    subscribe (observer) {
-        this._callSubscribe = observer;
+    },*/
+
+    dispatch (action){
+        if (action.type === 'ADD- POST'){
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: 0
+            }
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscribe(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT'){
+            this._state.profilePage.newPostText = newText;
+            this._callSubscribe(this._state);
+        }
     }
+
 }
 
 

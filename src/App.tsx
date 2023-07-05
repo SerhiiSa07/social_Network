@@ -9,25 +9,27 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import {HashRouter, Route, Switch} from "react-router-dom";
 
-const App = (props: { state: { profilePage: any; dialogPage: any; }; addPost: any; updateNewPostText: any; }) => {
+
+const App = (props.state) => {
 
     return (
-            <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
-                <div className='app-wrapper-content'>
-                    <Switch>
-                        <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}
-                        />}/>
-                        <Route path='/messages' render={() => <Dialogs state={props.state.dialogPage}/>}/>
-                        <Route path='/news' component={News}/>
-                        <Route path='/music' component={Music}/>
-                        <Route path='/settings' component={Settings}/>
-                        {/*<Route path='/friends' render={() =><Friends state={props.state.sidebar}/>} />*/}
-                    </Switch>
-                </div>
+        <div className='app-wrapper'>
+            <Header/>
+            <Navbar/>
+            <div className='app-wrapper-content'>
+                <Switch>
+                    <Route path='/profile'
+                           render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch}
+                           />}/>
+                    <Route path='/messages' render={() => <Dialogs state={props.state.dialogPage}/>}/>
+                    <Route path='/news' component={News}/>
+                    <Route path='/music' component={Music}/>
+                    <Route path='/settings' component={Settings}/>
+                    {/*<Route path='/friends' render={() =><Friends state={props.state.sidebar}/>} />*/}
+                </Switch>
             </div>
-    )
-}
+        </div>
+    );
+};
 
 export default App;

@@ -5,10 +5,12 @@ import './index.css';
 import App from './App';
 import {HashRouter} from "react-router-dom";
 
- let rerenderEntireThree = (state: { profilePage: any; dialogPage: any; }) => {
+
+
+ let rerenderEntireThree = (state: any) => {
     ReactDOM.render(
         <HashRouter>
-            <App state={state} addPost ={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)}/>
+            <App state={state} dispatch={store.dispatch.bind(store)} />
         </HashRouter>,
         document.getElementById('root'));
 }
