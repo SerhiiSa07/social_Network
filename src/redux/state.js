@@ -1,10 +1,14 @@
+import {message} from "antd";
 
 const ADD_POST = 'ADD-POST';
 
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-let store = {
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 
+const SEND_MESSAGE = 'SEND_MESSAGE';
+
+let store = {
     _state: {
         profilePage:
             {
@@ -31,6 +35,7 @@ let store = {
                     {id: 4, message: 'Yes'},
                     {id: 5, message: 'Yes'}
                 ],
+                newMessageBody: ''
             },
         /*sidebar:
             {
@@ -84,22 +89,28 @@ let store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT){
             this._state.profilePage.newPostText = newText;
             this._callSubscribe(this._state);
+        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.dialogPage.newMessageBody = action.body;
+        }else if (action.type === SEND_MESSAGE) {
+            let body = this._state.dialogPage.newMessageBody;
+            this._state.dialogPage.newMessageBody = '';
+            this._state.dialogPage.messages.push({id: 6, message: body});
+            this._callSubscribe(this._state);
         }
     }
 
 }
 
-export const addPostActionCreation = () => {
-    return {
-        type: ADD_POST
-    }
-}
+export const addPostActionCreation = () => ({type: ADD_POST})
+export const updateNewPostTextActionCreator = (text) =>
+    ({type: UPDATE_NEW_POST_TEXT, newText: text});
 
-export const updateNewPostTextActionCreator = (text) => {
-    return {type: UPDATE_NEW_POST_TEXT, newText: text};
-}
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
-export default store
+export const updateNewMessageCreator = (body) =>
+    ({type: UPDATE_NEW_MESSAGE_BODY, body: body});
+
+export default store;
 window.state = store;
 
 //store - OOP

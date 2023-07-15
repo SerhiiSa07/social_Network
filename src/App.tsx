@@ -10,7 +10,7 @@ import Settings from "./components/Settings/Settings";
 import {HashRouter, Route, Switch} from "react-router-dom";
 
 
-const App = (props.state) => {
+const App = () => {
 
     return (
         <div className='app-wrapper'>
