@@ -10,7 +10,7 @@ import Settings from "./components/Settings/Settings";
 import {HashRouter, Route, Switch} from "react-router-dom";
 
 
-const App = () => {
+const App = (props: any) => {
 
     return (
         <div className='app-wrapper'>
@@ -21,7 +21,7 @@ const App = () => {
                     <Route path='/profile'
                            render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch}
                            />}/>
-                    <Route path='/messages' render={() => <Dialogs state={props.state.dialogPage}/>}/>
+                    <Route path='/messages' render={() => <Dialogs store={props.store}/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>

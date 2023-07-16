@@ -8,9 +8,11 @@ import {HashRouter} from "react-router-dom";
  let rerenderEntireThree = (state: any) => {
     ReactDOM.render(
         <HashRouter>
-            <App state={state} dispatch={store.dispatch.bind(store)} />
+            <App state={state} dispatch={store.dispatch.bind(store)} store={store} />
         </HashRouter>,
         document.getElementById('root'));
 }
-rerenderEntireThree(store._state);
- store.subscribe(rerenderEntireThree);
+
+rerenderEntireThree(store.getState());
+
+store.subscribe(rerenderEntireThree);

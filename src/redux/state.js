@@ -1,4 +1,3 @@
-import {message} from "antd";
 
 const ADD_POST = 'ADD-POST';
 
@@ -35,7 +34,7 @@ let store = {
                     {id: 4, message: 'Yes'},
                     {id: 5, message: 'Yes'}
                 ],
-                newMessageBody: ''
+                newMessageBody: ""
             },
         /*sidebar:
             {
@@ -87,7 +86,7 @@ let store = {
             this._state.profilePage.newPostText = '';
             this._callSubscribe(this._state);
         } else if (action.type === UPDATE_NEW_POST_TEXT){
-            this._state.profilePage.newPostText = newText;
+            this._state.profilePage.newPostText = action.newText;
             this._callSubscribe(this._state);
         } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
             this._state.dialogPage.newMessageBody = action.body;
@@ -98,7 +97,6 @@ let store = {
             this._callSubscribe(this._state);
         }
     }
-
 }
 
 export const addPostActionCreation = () => ({type: ADD_POST})
@@ -107,14 +105,11 @@ export const updateNewPostTextActionCreator = (text) =>
 
 export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
-export const updateNewMessageCreator = (body) =>
-    ({type: UPDATE_NEW_MESSAGE_BODY, body: body});
+export const updateNewMessageBodyCreator = (body) =>
+    ({ type: UPDATE_NEW_MESSAGE_BODY, body: body });
 
 export default store;
 window.state = store;
 
 //store - OOP
-
-
-
 
