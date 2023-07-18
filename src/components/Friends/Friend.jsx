@@ -33,12 +33,15 @@ const Friends = () => {
 
 
 
-const Friends = () => {
+const Friends = (props) => {
+
+    let friendElements = props.friend;
+
     return (
 
         <div>
             <div className={l.titlesName}>
-                Friends
+                {friendElements} {/*Friends*/}
             </div>
             <div className={l.circle}>
                 <div className={l.circle1}></div>
@@ -46,7 +49,7 @@ const Friends = () => {
                 <div className={l.circle3}></div>
             </div>
             <div className={l.titleName}>
-                <div className={l.titleName1}>Dem</div>
+                <div className={l.titleName1}>{/*Dem*/}</div>
                 <div className={l.titleName2}>Flop</div>
                 <div className={l.titleName3}>Fes</div>
             </div>

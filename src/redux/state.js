@@ -36,18 +36,17 @@ let store = {
                 ],
                 newMessageBody: ""
             },
-        /*sidebar:
+        sidebar:
             {
-            friend: [
-                {id: 1, name: 'Friends'},
+                friend: [
+                    {id: 1, name: 'Friends'}
                 ],
-            friends: [
-                {id: 1, name: 'Dem'},
-                {id: 2, name: 'Flop'},
-                {id: 3, name: 'Fes'}
-            ],
-        },*/
-
+                friends: [
+                    {id: 2, name: 'Dem'},
+                    {id: 3, name: 'Flop'},
+                    {id: 4, name: 'Fes'}
+                ],
+             },
     },
     _callSubscribe () {
         console.log('State changed');

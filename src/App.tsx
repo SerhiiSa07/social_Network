@@ -8,6 +8,7 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import {HashRouter, Route, Switch} from "react-router-dom";
+import Friends from "./components/Friends/Friend";
 
 
 const App = (props: any) => {
@@ -25,7 +26,7 @@ const App = (props: any) => {
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
-                    {/*<Route path='/friends' render={() =><Friends state={props.state.sidebar}/>} />*/}
+                    <Route path='/friends' component={Friends} />
                 </Switch>
             </div>
         </div>
