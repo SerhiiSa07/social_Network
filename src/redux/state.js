@@ -38,7 +38,7 @@ let store = {
             },
         sidebar:
             {
-                friend: [
+                firstName: [
                     {id: 1, name: 'Friends'}
                 ],
                 friends: [
