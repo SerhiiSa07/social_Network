@@ -1,4 +1,59 @@
 
+
+export type StoreType = {
+    state: StateType
+}
+
+export type StateType = {
+    profilePage: ProfilePageType
+    dialogPage: DialogPageType
+    sidebar: SidebarType
+}
+
+export type ProfilePageType = {
+    posts: Array<PostsType>[]
+    newPostText: string
+}
+
+export type PostsType = {
+    id: number
+    message: string
+    likesCount: number
+
+}
+
+export type DialogPageType = {
+    dialogs: Array<DialogsType>
+    messages: Array<MessagesType>
+    newMessageBody: string
+}
+
+export type DialogsType = {
+    id: number
+    name: string
+}
+
+export type SidebarType = {
+    firstName: Array<FirstNameType>
+    friends: FriendsType[]
+}
+
+export type MessagesType = {
+    id: number
+    message: string
+}
+
+export type FirstNameType = {
+    id: number
+    name: string
+}
+
+export type FriendsType = {
+    id: number
+    name: string
+}
+
+
 const ADD_POST = 'ADD-POST';
 
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -12,8 +67,8 @@ let store = {
         profilePage:
             {
                 posts: [
-                    {id: 1, message: 'Serg', likesCount: '0'},
-                    {id: 2, message: 'Lex', likesCount: '23'}
+                    {id: 1, message: 'Serg', likesCount: 0},
+                    {id: 2, message: 'Lex', likesCount: 23}
                 ],
                 newPostText:
                     "You are Welcome Serhii !!!"
@@ -55,7 +110,7 @@ let store = {
     getState(){
         return this._state;
     },
-    subscribe (observer) {
+    subscribe (observer: any) {
         this._callSubscribe = observer;
     },
 
@@ -74,16 +129,21 @@ let store = {
         this._callSubscribe(this._state);
     },*/
 
-    dispatch (action){
+
+
+    dispatch (action: any) {
         if (action.type === ADD_POST){
+
             let newPost = {
                 id: 5,
                 message: this._state.profilePage.newPostText,
                 likesCount: 0
             }
+
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = '';
             this._callSubscribe(this._state);
+
         } else if (action.type === UPDATE_NEW_POST_TEXT){
             this._state.profilePage.newPostText = action.newText;
             this._callSubscribe(this._state);
@@ -99,12 +159,12 @@ let store = {
 }
 
 export const addPostActionCreation = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (text) =>
+export const updateNewPostTextActionCreator = (text: any) =>
     ({type: UPDATE_NEW_POST_TEXT, newText: text});
 
 export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
-export const updateNewMessageBodyCreator = (body) =>
+export const updateNewMessageBodyCreator = (body: any) =>
     ({ type: UPDATE_NEW_MESSAGE_BODY, body: body });
 
 export default store;
