@@ -11,7 +11,7 @@ export type StateType = {
 }
 
 export type ProfilePageType = {
-    posts: Array<PostsType>[]
+    posts: Array<PostsType>
     newPostText: string
 }
 
@@ -103,7 +103,7 @@ let store = {
                 ],
              },
     },
-    _callSubscribe () {
+    _callSubscribe (_state: any) {
         console.log('State changed');
     },
 
@@ -168,6 +168,7 @@ export const updateNewMessageBodyCreator = (body: any) =>
     ({ type: UPDATE_NEW_MESSAGE_BODY, body: body });
 
 export default store;
+// @ts-ignore
 window.state = store;
 
 //store - OOP

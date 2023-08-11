@@ -7,10 +7,9 @@ import Profile from "./components/Profile/Profile";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
-import {HashRouter, Route, Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Friends from "./components/Friends/Friends";
-import State, {StoreType} from "./redux/state";
-import Friend from "./components/Friends/Friends";
+import {StoreType} from "./redux/state";
 
 export type AppPropsType = {
     dispatch: any;
