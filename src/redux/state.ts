@@ -1,7 +1,6 @@
 
-
 export type StoreType = {
-    state: StateType
+    _state: StateType
 }
 
 export type StateType = {
@@ -11,7 +10,7 @@ export type StateType = {
 }
 
 export type ProfilePageType = {
-    posts: Array<PostsType>
+    posts: PostsType[]
     newPostText: string
 }
 
@@ -23,8 +22,8 @@ export type PostsType = {
 }
 
 export type DialogPageType = {
-    dialogs: Array<DialogsType>
-    messages: Array<MessagesType>
+    dialogs: DialogsType[]
+    messages: MessagesType[]
     newMessageBody: string
 }
 
@@ -103,6 +102,7 @@ let store = {
                 ],
              },
     },
+
     _callSubscribe (_state: any) {
         console.log('State changed');
     },
@@ -110,6 +110,7 @@ let store = {
     getState(){
         return this._state;
     },
+
     subscribe (observer: any) {
         this._callSubscribe = observer;
     },
@@ -168,6 +169,7 @@ export const updateNewMessageBodyCreator = (body: any) =>
     ({ type: UPDATE_NEW_MESSAGE_BODY, body: body });
 
 export default store;
+
 // @ts-ignore
 window.state = store;
 

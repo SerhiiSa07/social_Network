@@ -1,11 +1,13 @@
-import store  from "./redux/state";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {HashRouter} from "react-router-dom";
+import {StateType} from "./redux/state";
+import store from "./redux/state";
 
- let rerenderEntireThree = (state: any) => {
+
+ let rerenderEntireThree = (state: StateType) => {
      ReactDOM.render(
          <HashRouter>
              <App state={state}
@@ -15,6 +17,10 @@ import {HashRouter} from "react-router-dom";
          document.getElementById('root'));
 }
 
+
 rerenderEntireThree(store.getState());
 
-store.subscribe(rerenderEntireThree);
+store.subscribe( () => {
+    const state = store.getState()
+    rerenderEntireThree(state)
+} );
