@@ -9,7 +9,7 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import {Route, Switch} from "react-router-dom";
 import Friends from "./components/Friends/Friends";
-import {StoreType} from "./redux/state";
+import {StoreType} from "./redux/store";
 
 export type AppPropsType = {
     dispatch: any;

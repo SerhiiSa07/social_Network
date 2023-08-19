@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import store, {StateType} from "./redux/state";
+import store from "./redux/redux-store";
 import ReactDOM from "react-dom";
 import {HashRouter} from "react-router-dom";
 import App from "./App";
