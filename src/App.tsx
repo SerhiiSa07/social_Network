@@ -18,7 +18,7 @@ export type AppPropsType = {
 }
 
 const App = (props: AppPropsType) => {
-
+    debugger
     return (
         <div className='app-wrapper'>
             <Header/>
@@ -26,7 +26,7 @@ const App = (props: AppPropsType) => {
             <div className='app-wrapper-content'>
                 <Switch>
                     <Route path='/profile'
-                           render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch}/>}/>
+                           render={() => <Profile store={props.store}/>}/>
                     <Route path='/messages' render={() => <Dialogs store={props.store}/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>

@@ -4,6 +4,7 @@ import store from "./redux/redux-store";
 import ReactDOM from "react-dom";
 import {HashRouter} from "react-router-dom";
 import App from "./App";
+import {StateType} from "./redux/store";
 
 export let rerenderEntireThree = (state: StateType) => {
     ReactDOM.render(
