@@ -18,7 +18,6 @@ export type AppPropsType = {
 }
 
 const App = (props: AppPropsType) => {
-    debugger
     return (
         <div className='app-wrapper'>
             <Header/>
