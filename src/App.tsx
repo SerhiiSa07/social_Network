@@ -17,7 +17,7 @@ export type AppPropsType = {
     store: StoreType
 }
 
-const App = (props: AppPropsType) => {
+const App = () => {
     return (
         <div className='app-wrapper'>
             <Header/>
@@ -25,12 +25,12 @@ const App = (props: AppPropsType) => {
             <div className='app-wrapper-content'>
                 <Switch>
                     <Route path='/profile'
-                           render={() => <Profile store={props.store}/>}/>
-                    <Route path='/messages' render={() => <Dialogs store={props.store}/>}/>
+                           render={() => <Profile/>}/>
+                    <Route path='/messages' render={() => <Dialogs />}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
-                    <Route path='/friends' render={() => <Friends store={props.store} dispatch={props.dispatch}/>}/>
+                    <Route path='/friends' render={() => <Friends />}/>
                 </Switch>
             </div>
         </div>
