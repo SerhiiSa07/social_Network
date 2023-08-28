@@ -5,13 +5,15 @@ import sidebarReducer from "./sidebar-reducer";
 
 let reducers = combineReducers(
     {
-        profileReducer,
-        dialogsReducer,
-        sidebarReducer
+        profileReducer: profileReducer,
+        dialogsReducer: dialogsReducer,
+        sidebarReducer: sidebarReducer
     }
 );
 
 let store = createStore(reducers);
+
+window.store = store;
 
 export default store;
 
