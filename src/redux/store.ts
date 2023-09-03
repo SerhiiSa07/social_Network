@@ -8,7 +8,7 @@ export type StoreType = {
 
 export type StateType = {
     profilePage: ProfilePageType
-    dialogPage: DialogPageType
+    dialogsPage: DialogPageType
     sidebar: SidebarType
 }
 
@@ -66,7 +66,7 @@ let store = {
                 newPostText:
                     "You are Welcome Serhii !!!"
             },
-        dialogPage:
+        dialogsPage:
             {
                 dialogs: [
                     {id: 1, name: 'Serg'},
@@ -94,6 +94,7 @@ let store = {
                     {id: 3, name: 'Flop'},
                     {id: 4, name: 'Fes'}
                 ],
+                newNameFriends: ''
              },
     },
 
@@ -124,12 +125,10 @@ let store = {
         this._callSubscribe(this._state);
     },*/
 
-
-
     dispatch (action: any) {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
-        this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
         this._callSubscribe(this._state);
     }

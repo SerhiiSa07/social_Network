@@ -9,12 +9,12 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import {Route, Switch} from "react-router-dom";
 import Friends from "./components/Friends/Friends";
-import {StoreType} from "./redux/store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+
 
 export type AppPropsType = {
     dispatch: any;
     state: any;
-    store: StoreType
 }
 
 const App = () => {
@@ -26,11 +26,12 @@ const App = () => {
                 <Switch>
                     <Route path='/profile'
                            render={() => <Profile/>}/>
-                    <Route path='/messages' render={() => <Dialogs />}/>
+                    <Route path='/messages'
+                           render={() => <DialogsContainer/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
-                    <Route path='/friends' render={() => <Friends />}/>
+                    <Route path='/friends' render={() => <Friends/>}/>
                 </Switch>
             </div>
         </div>
