@@ -25,19 +25,19 @@ const sidebarReducer = (state = initialState, action) => {
     switch (action.type){
         case UPDATE_NEW_FIRST_NAME:
             stateCopy = { ...state,
-                newMessageBody:
-                action.body
+                newNameFriends:
+                action.friend
             };
 
             return stateCopy;
 
         case UPDATE_NEW_NAME_FRIENDS:
 
-            let body = state.newMessageBody;
+            let friend = state.newNameFriends;
             return{
                 ...state,
-                newMessageBody: '',
-                messages: [...state.messages, {id: 6, message: body}]
+                newNameFriends: '',
+                friends: [...state.friends, {id: 5, name: friend}]
             };
         default:
             return state;
@@ -46,7 +46,7 @@ const sidebarReducer = (state = initialState, action) => {
 
 export const firstNameCreator = () => ({ type: UPDATE_NEW_FIRST_NAME });
 
-export const updateNewNameFriendsCreator = (body) =>
-    ({ type: UPDATE_NEW_NAME_FRIENDS, body: body });
+export const updateNewNameFriendsCreator = (friend) =>
+    ({ type: UPDATE_NEW_NAME_FRIENDS, friend: friend });
 
 export default sidebarReducer;
