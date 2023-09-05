@@ -10,6 +10,8 @@ import Settings from "./components/Settings/Settings";
 import {Route, Switch} from "react-router-dom";
 import Friends from "./components/Friends/Friends";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import FriendsContainer from "./components/Friends/FriendsContainer";
+import Users from "./components/Users/Users";
 
 
 export type AppPropsType = {
@@ -31,7 +33,9 @@ const App = () => {
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
-                    <Route path='/friends' render={() => <Friends/>}/>
+                    <Route path='/friends' render={() => <FriendsContainer/>}/>
+                    <Route path='/users'
+                           render={ () => <Users/> }/>
                 </Switch>
             </div>
         </div>

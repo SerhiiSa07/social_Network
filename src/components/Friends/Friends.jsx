@@ -1,10 +1,6 @@
-import {NavLink} from "react-router-dom";
 import l from "./Friend.module.css";
 import React from "react";
-import DialogItem from "../Dialogs/DialogItem/DialogItem";
-import Message from "../Dialogs/Message/Messages";
-import State from "../../redux/store";
-import store from "../../redux/store";
+
 
 /*let friendElements = props.state.friend.map(d => <Friends name={d.name} id={d.id}/>);
 let messagesElements = props.state.messages.map(m => <Message message={m.message}/>);*/

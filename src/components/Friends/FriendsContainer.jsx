@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
     return {
-        dialogsPage: state.dialogsPage
+        sidebar: state.sidebar
     }
 }
 
@@ -14,12 +14,12 @@ let mapDispatchToProps = (dispatch) => {
         firstName: () => {
             dispatch(firstNameCreator());
         },
-        updateNewNameFriend: (body) => {
-            dispatch(updateNewNameFriendsCreator(body));
+        updateNewNameFriend: (friend) => {
+            dispatch(updateNewNameFriendsCreator(friend));
         }
     }
 }
 
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
 
 export default FriendsContainer;
