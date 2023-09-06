@@ -2,16 +2,14 @@ import React from 'react';
 import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import Dialogs from "./components/Dialogs/Dialogs";
 import Profile from "./components/Profile/Profile";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import {Route, Switch} from "react-router-dom";
-import Friends from "./components/Friends/Friends";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
-import Users from "./components/Users/Users";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 export type AppPropsType = {
@@ -35,7 +33,7 @@ const App = () => {
                     <Route path='/settings' component={Settings}/>
                     <Route path='/friends' render={() => <FriendsContainer/>}/>
                     <Route path='/users'
-                           render={ () => <Users/> }/>
+                           render={ () => <UsersContainer/> }/>
                 </Switch>
             </div>
         </div>
