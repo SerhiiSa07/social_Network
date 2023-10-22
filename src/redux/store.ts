@@ -64,7 +64,9 @@ let store = {
                     {id: 2, message: 'Lex', likesCount: 23}
                 ],
                 newPostText:
-                    "You are Welcome Serhii !!!"
+                    "You are Welcome Serhii !!!",
+
+                profile: null
             },
         dialogsPage:
             {
