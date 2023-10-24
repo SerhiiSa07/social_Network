@@ -24,7 +24,7 @@ const App = () => {
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Switch>
-                    <Route path='/profile/:userId'
+                    <Route path='/profile/:userId?'
                            render={() => <ProfileContainer
                                />}/>
                     <Route path='/messages'
