@@ -11,3 +11,11 @@
 .item {
     color: red;
 }
+
+.loginBlock{
+    float: right;
+}
+
+.loginBlock a {
+    color: white;
+}
