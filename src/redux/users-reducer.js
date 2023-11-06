@@ -1,3 +1,6 @@
+import users from "../components/Users/Users";
+import * as usersAPI from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 
 const UNFOLLOW = 'UNFOLLOW';
@@ -22,7 +25,6 @@ let initialState = {
 }
 
 const usersReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case FOLLOW:
             return {
@@ -92,5 +94,16 @@ export const toggleIsFetching = (isFetching) =>
 export const toggleFollowingProgress = (isFetching, userId) =>
     ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId});
 
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalUsersCount));
+        });
+    }
+}
 export default usersReducer;
 
