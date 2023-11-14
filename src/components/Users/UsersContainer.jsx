@@ -13,14 +13,17 @@ import {usersAPI} from "../../api/api";
 
 
 class UsersContainer extends React.Component {
+
     componentDidMount() {
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize);
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
     onPageChanged = (pageNumber) => {
-        usersAPI.getUsers(pageNumber, this.props.pageSize);
+        this.props.getUsers(pageNumber, this.props.pageSize);
     }
     render() {
+
         return <>
+
             {this.props.isFetching ? <Preloader/> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
                    pageSize={this.props.pageSize}

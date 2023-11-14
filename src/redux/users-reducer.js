@@ -1,4 +1,5 @@
 import {usersAPI} from "../api/api";
+import {setUserProfile} from "./profile-reducer";
 
 const FOLLOW = 'FOLLOW';
 
@@ -51,12 +52,10 @@ const usersReducer = (state = initialState, action) => {
         {
             return {...state, users: action.users}
         }
-
         case SET_CURRENT_PAGE:
         {
             return {...state, currentPage: action.currentPage}
         }
-
         case SET_TOTAL_USERS_COUNT:
         {
             return {...state, totalUsersCount: action.count}
@@ -93,9 +92,7 @@ export const toggleIsFetching = (isFetching) =>
 export const toggleFollowingProgress = (isFetching, userId) =>
     ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId});
 
-export const getUsers = (currentPage, pageSize) => {
-
-    return (dispatch) => {
+export const getUsers = (currentPage, pageSize) => (dispatch) => {
 
         dispatch(toggleIsFetching(true));
 
@@ -104,9 +101,7 @@ export const getUsers = (currentPage, pageSize) => {
             dispatch(setUsers(data.items));
             dispatch(setTotalUsersCount(data.totalUsersCount));
         });
-    }
 }
-
 export const follow = (userId) => {
 
     return (dispatch) => {

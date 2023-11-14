@@ -60,7 +60,7 @@ let store = {
         profilePage:
             {
                 posts: [
-                    {id: 1, message: 'Serg', likesCount: 0},
+                    {id: 1, message: 'Serg', likesCount: 10},
                     {id: 2, message: 'Lex', likesCount: 23}
                 ],
                 newPostText:
