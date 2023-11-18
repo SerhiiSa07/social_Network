@@ -10,6 +10,7 @@ import FriendsContainer from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 
 
 export type AppPropsType = {
@@ -35,6 +36,8 @@ const App = () => {
                     <Route path='/friends' render={() => <FriendsContainer/>}/>
                     <Route path='/users'
                            render={ () => <UsersContainer/> }/>
+                    <Route path='/login'
+                           render={ () => <Login/> }/>
                 </Switch>
             </div>
         </div>
