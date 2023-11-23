@@ -25,37 +25,25 @@ const Dialogs = (props) => {
     if(!props.isAuth) return <Redirect to={'/login'}/> ;
 
     return (
-
         <div className={s.dialogs}>
             <div>
-
                 <div className={s.dialogsItems}>
                     {dialogsElements}
                 </div>
-
             </div>
-
             <div className={s.messages}>
-
                 <div>{messagesElements}</div>
-
             </div>
-
             <div className={s.onMessageTextarea}>
-
                 <div>
                     <textarea
                                onChange={onNewMessageChange}
                                placeholder='Enter your message'>
                     </textarea>
                 </div>
-
                 <div>
-
                     <button onClick={onSendMessageClick}>Send</button>
-
                 </div>
-
             </div>
         </div>
     )
