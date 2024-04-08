@@ -20,7 +20,7 @@ let initialState = {
         newMessageBody: ""
 };
 
- const dialogsReducer = (state = initialState, action) => {
+ const dialogsReducer = (state = initialState, action: any) => {
 
      let stateCopy;
 
@@ -48,7 +48,7 @@ let initialState = {
 
 export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
-export const updateNewMessageBodyCreator = (body) =>
+export const updateNewMessageBodyCreator = (body: any) =>
     ({ type: UPDATE_NEW_MESSAGE_BODY, body: body });
 
 export default dialogsReducer;
