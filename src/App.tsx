@@ -1,21 +1,18 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
-import Music from "./components/Music/Music";
-import News from "./components/News/News";
-import Settings from "./components/Settings/Settings";
+import Navbar from "components/Navbar/Navbar";
+import Music from "components/Music/Music";
+import News from "components/News/News";
+import Settings from "components/Settings/Settings";
 import { Route, Switch } from "react-router-dom";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import FriendsContainer from "./components/Friends/FriendsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
-import { StoreType } from "redux/store";
-
-export type PropsType = {
-  store: StoreType;
-};
+import DialogsContainer from "components/Dialogs/DialogsContainer";
+import FriendsContainer from "components/Friends/FriendsContainer";
+import UsersContainer from "components/Users/UsersContainer";
+import ProfileContainer from "components/Profile/ProfileContainer";
+import HeaderContainer from "components/Header/HeaderContainer";
+import Login from "components/Login/Login";
+import { PostsType, StoreType } from "redux/store";
+import { ActionTypes } from "redux-form";
 
 const App: React.FC = (props) => {
   /*const state = props.store.getState();*/
@@ -38,6 +35,20 @@ const App: React.FC = (props) => {
       </div>
     </div>
   );
+};
+
+//types
+
+export type PropsType = {
+  store: StoreType;
+};
+
+type MessageType = {
+  message: string;
+  posts: Array<PostsType>;
+  addPostCallback: (postText: string) => void;
+  changeNewTextCallback: (newText: string) => void;
+  dispatch: (action: ActionTypes) => void;
 };
 
 export default App;

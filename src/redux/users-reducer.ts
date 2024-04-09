@@ -1,6 +1,7 @@
 import { usersAPI } from "api/api";
 import { setUserProfile } from "./profile-reducer";
 import { Dispatch } from "redux";
+import { StateType, StoreType } from "redux/store";
 
 const FOLLOW = "FOLLOW";
 
@@ -16,6 +17,23 @@ const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 
 const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS";
 
+export type UserType = {
+  userId: string;
+  users: string;
+  currentPage: any;
+  count: any;
+  isFetching: any;
+};
+
+type InitialStateType = {
+  users: Array<UserType>;
+  pageSize: number;
+  totalUsersCount: number;
+  currentPage: number;
+  isFetching: boolean;
+  followingInProgress: Array<UserType>;
+};
+
 let initialState = {
   users: [],
   pageSize: 5,
@@ -25,10 +43,7 @@ let initialState = {
   followingInProgress: [],
 };
 
-const usersReducer = (
-  state = initialState,
-  action: { type: any; userId: any; users: any; currentPage: any; count: any; isFetching: any },
-) => {
+const usersReducer = (state: InitialStateType, action: StateType): InitialStateType => {
   switch (action.type) {
     case FOLLOW:
       return {

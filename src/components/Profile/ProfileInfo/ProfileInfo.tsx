@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import imageS from "S:/it-kamasutra/23-04-23-first_project/samurai-way-main/src/components/Profile/ProfileInfo/IMG_20221208_162603-min-round.png";
-import Preloader from "../../common/Preloader/Preloader";
+import Preloader from "components/common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {

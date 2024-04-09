@@ -1,7 +1,3 @@
-import profileReducer from "../redux/profile-reducer";
-import dialogsReducer from "../redux/dialogs-reducer";
-import sidebarReducer from "../redux/sidebar-reducer";
-
 export type StoreType = {
   _state: StateType;
   _callSubscribe: (_state: any) => void;
@@ -151,7 +147,6 @@ const store: StoreType = {
       this._state.profilePage.newPostText = action.newText;
       this._onChange();
     }
-
     /*this._state.profilePage = profileReducer(this._state.profilePage, action);
     this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
     this._state.sidebar = sidebarReducer(this._state.sidebar, action);
