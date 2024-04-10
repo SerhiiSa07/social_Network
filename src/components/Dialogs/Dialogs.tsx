@@ -3,9 +3,15 @@ import s from "./Dialogs.module.css";
 import DialogItem from "components/Dialogs/DialogItem/DialogItem";
 import Message from "components/Dialogs/Message/Messages";
 import { Redirect } from "react-router-dom";
+import store from "redux/store";
+
+type DialogsType = {
+  id: number;
+  name: string;
+};
 
 const Dialogs = (props) => {
-  let state = props.dialogsPage;
+  let state = store._state.dialogsPage;
 
   let dialogsElements = state.dialogs.map((d) => <DialogItem name={d.name} id={d.id} />);
 

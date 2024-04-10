@@ -1,15 +1,15 @@
 export type StoreType = {
-  _state: StateType;
+  _state: RootStateType;
   _callSubscribe: (_state: any) => void;
   updateNewPostText: (newText: string) => void;
   addPost: (postText: string) => void;
   _onChange: () => void;
   _subscribe: (callback: () => void) => void;
-  getState: () => StateType;
+  getState: () => RootStateType;
   dispatch: (action: ActionsTypes) => void;
 };
 
-export type StateType = {
+export type RootStateType = {
   profilePage: ProfilePageType;
   dialogsPage: DialogPageType;
   sidebar: SidebarType;
@@ -33,7 +33,7 @@ export type DialogPageType = {
   newMessageBody: string;
 };
 
-export type DialogsType = {
+type DialogsType = {
   id: number;
   name: string;
 };

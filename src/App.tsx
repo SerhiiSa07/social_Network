@@ -39,9 +39,9 @@ const App: React.FC = (props) => {
 
 //types
 
-export type PropsType = {
+/*export type PropsType = {
   store: StoreType;
-};
+};*/
 
 type MessageType = {
   message: string;
@@ -49,6 +49,28 @@ type MessageType = {
   addPostCallback: (postText: string) => void;
   changeNewTextCallback: (newText: string) => void;
   dispatch: (action: ActionTypes) => void;
+};
+
+function HelloMessage(props: MessageType) {
+  let postMessageRef = React.createRef<HTMLTextAreaElement>();
+
+  const addPost = () => {
+    if (postMessageRef.current) {
+      props.addPostCallback(postMessageRef.current.value);
+    }
+  };
+
+  return (
+    <div>
+      {props.message}
+      <textarea ref={postMessageRef}></textarea>
+      <button onClick={addPost}>add post</button>
+    </div>
+  );
+}
+
+const ByeMessage: React.FC<MessageType> = (props) => {
+  return <h1>{props.message}</h1>;
 };
 
 export default App;
