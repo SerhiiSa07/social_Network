@@ -1,5 +1,4 @@
 import React from "react";
-import { updateStatus } from "../../../redux/profile-reducer";
 
 class ProfileStatus extends React.Component {
   state = {
@@ -26,7 +25,14 @@ class ProfileStatus extends React.Component {
     });
   };
 
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status,
+      });
+    }
+    console.log("componentDidUpdate");
+  }
 
   render() {
     return (
