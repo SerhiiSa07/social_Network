@@ -2,6 +2,7 @@ import React from "react";
 
 import { Field, InjectedFormProps, reduxForm } from "redux-form";
 import { Input } from "components/common/FormControls/FormsControls";
+import { required } from "utils/validators/validators";
 
 type FormDataType = {
   login: string;
@@ -13,7 +14,7 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field placeholder={"Login"} name={"login"} component={Input} />
+        <Field placeholder={"Login"} name={"login"} validate={[required]} component={Input} />
       </div>
       <div>
         <Field placeholder={"Password"} name={"password"} component={Input} />
