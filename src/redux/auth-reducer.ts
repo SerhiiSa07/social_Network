@@ -23,7 +23,7 @@ const authReducer = (state = initialState, action: any) => {
     case SET_USER_DATA:
       return {
         ...state,
-        ...action.data,
+        ...action.payload,
         isAuth: true,
       };
     /*case TOGGLE_IS_FETCHING:
@@ -35,20 +35,35 @@ const authReducer = (state = initialState, action: any) => {
   }
 };
 
-export const setAuthUserData = (userId: any, email: any, login: any) => ({
+export const setAuthUserData = (userId: any, email: any, login: any, isAuth: any) => ({
   type: SET_USER_DATA,
-  data: { userId, email, login },
+  payload: { userId, email, login, isAuth },
 });
 
 export const getAuthUserData = () => (dispatch: any) => {
   authAPI.me().then((response: { data: { resultCode: number; data: { id: any; login: any; email: any } } }) => {
     if (response.data.resultCode === 0) {
       let { id, login, email } = response.data.data;
-      dispatch(setAuthUserData(id, login, email));
+      dispatch(setAuthUserData(id, login, email, true));
     }
   });
 };
 
+export const login = (email, password, rememberMe) => (dispatch: any) => {
+  authAPI.login(email, password, rememberMe).then((response) => {
+    if (response.data.resultCode === 0) {
+      dispatch(getAuthUserData());
+    }
+  });
+};
+
+export const logout = () => (dispatch: any) => {
+  authAPI.logout().then((response) => {
+    if (response.data.resultCode === 0) {
+      dispatch(getAuthUserData(null, null, null, false));
+    }
+  });
+};
 /*export const toggleIsFetching = (isFetching) =>
     ({type: TOGGLE_IS_FETCHING, isFetching});*/
 
