@@ -40,33 +40,32 @@ export const setAuthUserData = (userId: any, email: any, login: any, isAuth: any
   payload: { userId, email, login, isAuth },
 });
 
-export const getAuthUserData = () => (dispatch: any) => {
-  authAPI.me().then((response: { data: { resultCode: number; data: { id: any; login: any; email: any } } }) => {
-    if (response.data.resultCode === 0) {
-      let { id, login, email } = response.data.data;
-      dispatch(setAuthUserData(id, login, email, true));
-    }
-  });
+export const getAuthUserData = () => async (dispatch: any) => {
+  let response = await authAPI.me();
+  if (response.data.resultCode === 0) {
+    let { id, login, email } = response.data.data;
+    dispatch(setAuthUserData(id, login, email, true));
+  }
 };
 
-export const login = (email, password, rememberMe) => (dispatch: any) => {
-  authAPI.login(email, password, rememberMe).then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(getAuthUserData());
-    } else {
-      let message = response.data.message.length > 0 ? response.data.message[0] : "Some error";
-      dispatch(stopSubmit("login", { _error: message }));
-    }
-  });
+export const login = (email, password, rememberMe) => async (dispatch: any) => {
+  let response = await authAPI.login(email, password, rememberMe);
+  if (response.data.resultCode === 0) {
+    dispatch(getAuthUserData());
+  } else {
+    let message = response.data.message.length > 0 ? response.data.message[0] : "Some error";
+    dispatch(stopSubmit("login", { _error: message }));
+  }
 };
 
-export const logout = () => (dispatch: any) => {
-  authAPI.logout().then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(getAuthUserData(null, null, null, false));
-    }
-  });
+export const logout = () => async (dispatch: any) => {
+  let response = authAPI.logout();
+
+  if (response.data.resultCode === 0) {
+    dispatch(getAuthUserData(null, null, null, false));
+  }
 };
+
 /*export const toggleIsFetching = (isFetching) =>
     ({type: TOGGLE_IS_FETCHING, isFetching});*/
 
