@@ -1,9 +1,10 @@
 import { profileAPI, usersAPI } from "api/api";
 
 const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+//const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
+const DELETE_POST = "DELETE_POST";
 
 type PostType = {
   id: number;
@@ -70,6 +71,11 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
         status: action.status,
       };
     }
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((p) => p.id != action.postId),
+      };
     default:
       return state;
   }
@@ -95,6 +101,12 @@ type setStatusType = {
   status: string;
 };
 export const setStatus = (status: string): setStatusType => ({ type: SET_STATUS, status });
+
+type deletePostType = {
+  type: typeof DELETE_POST;
+  postId: number;
+};
+export const deletePost = (postId: number): deletePostType => ({ type: DELETE_POST, postId });
 
 type getUserProfileType = {
   type: typeof SET_STATUS;
