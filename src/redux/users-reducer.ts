@@ -1,6 +1,5 @@
 import { usersAPI } from "api/api";
 import { Dispatch } from "redux";
-import { StateType } from "redux/store";
 
 const FOLLOW = "FOLLOW";
 
@@ -42,7 +41,7 @@ let initialState = {
   followingInProgress: [],
 };
 
-const usersReducer = (state: InitialStateType, action: StateType): InitialStateType => {
+const usersReducer = (state: InitialStateType, action: any): InitialStateType => {
   switch (action.type) {
     case FOLLOW:
       return {
@@ -106,7 +105,6 @@ export const toggleFollowingProgress = (isFetching: any, userId: any) => ({
   isFetching,
   userId,
 });
-
 export const requestUsers = (page: any, pageSize: any) => async (dispatch: Dispatch) => {
   dispatch(toggleIsFetching(true));
   dispatch(setCurrentPage(page));
@@ -115,7 +113,6 @@ export const requestUsers = (page: any, pageSize: any) => async (dispatch: Dispa
   dispatch(setUsers(data.items));
   dispatch(setTotalUsersCount(data.totalUsersCount));
 };
-
 const followUnfollowFlow = async (dispatch: Dispatch, userId: any, apiMethod: any, actionCreator: any) => {
   dispatch(toggleFollowingProgress(true, userId));
   let response = await apiMethod(true, userId);
@@ -124,17 +121,14 @@ const followUnfollowFlow = async (dispatch: Dispatch, userId: any, apiMethod: an
   }
   dispatch(toggleFollowingProgress(false, userId));
 };
-
 export const follow = (userId: any) => {
   return async (dispatch: Dispatch) => {
     followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess);
   };
 };
-
 export const unfollow = (userId: any) => {
   return async (dispatch: Dispatch) => {
     followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess);
   };
 };
-
 export default usersReducer;

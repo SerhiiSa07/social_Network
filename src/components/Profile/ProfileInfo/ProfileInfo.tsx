@@ -3,6 +3,7 @@ import s from "./ProfileInfo.module.css";
 import imageS from "S:/it-kamasutra/23-04-23-first_project/samurai-way-main/src/components/Profile/ProfileInfo/IMG_20221208_162603-min-round.png";
 import Preloader from "components/common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWitchHooks from "components/Profile/ProfileInfo/ProfileStatusWitchHooks";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -19,7 +20,7 @@ const ProfileInfo = (props) => {
       </div>
       <div className={s.descriptionBlock}>
         <img src={props.profile.photos.large} />
-        <ProfileStatus />
+        <ProfileStatusWitchHooks status={props.status} updateStatus={props.updateStatus} />
       </div>
     </div>
   );

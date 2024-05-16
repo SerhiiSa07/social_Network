@@ -11,17 +11,26 @@ import UsersContainer from "components/Users/UsersContainer";
 import ProfileContainer from "components/Profile/ProfileContainer";
 import HeaderContainer from "components/Header/HeaderContainer";
 import Login from "components/Login/Login";
-import { PostsType } from "redux/store";
+import { PostsType, StoreType } from "redux/store";
 import { ActionTypes } from "redux-form";
 import { connect } from "react-redux";
 import { getAuthUserData } from "redux/auth-reducer";
 import { compose } from "redux";
 import Preloader from "components/common/Preloader/Preloader";
 
-class App extends React.Component {
+class App extends React.Component<StoreType> {
+  catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
+    alert("Some error occured");
+  };
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
   }
+
+  componentWillUnmount() {
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+  }
+
   render() {
     if (!this.props.initialized) {
       return <Preloader />;

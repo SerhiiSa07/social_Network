@@ -1,21 +1,20 @@
 import React from "react";
 import "./index.css";
-import store from "../src/redux/redux-store";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { Provider } from "react-redux";
 import { RootStateType, StoreType } from "redux/store";
 
-// const renderTree = (store: StoreType) => {
+const renderTree = (store: StoreType) => {
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <App/>
     </Provider>
   </BrowserRouter>,
   document.getElementById("root"),
 );
-/*};
 
-renderTree(store);*/
+
+renderTree(store);
