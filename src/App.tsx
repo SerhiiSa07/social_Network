@@ -4,20 +4,23 @@ import Navbar from "components/Navbar/Navbar";
 import Music from "components/Music/Music";
 import News from "components/News/News";
 import Settings from "components/Settings/Settings";
-import { Route, Switch, withRouter } from "react-router-dom";
-import DialogsContainer from "components/Dialogs/DialogsContainer";
+import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
+
 import FriendsContainer from "components/Friends/FriendsContainer";
 import UsersContainer from "components/Users/UsersContainer";
-import ProfileContainer from "components/Profile/ProfileContainer";
 import HeaderContainer from "components/Header/HeaderContainer";
 import Login from "components/Login/Login";
 import { PostsType, StoreType } from "redux/store";
 import { ActionTypes } from "redux-form";
-import { connect } from "react-redux";
+import { connect, Provider } from "react-redux";
 import { getAuthUserData } from "redux/auth-reducer";
 import { compose } from "redux";
 import Preloader from "components/common/Preloader/Preloader";
+import store from "redux/redux-store";
+import { withSuspense } from "hoc/withSuspense";
 
+const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
+const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
 class App extends React.Component<StoreType> {
   catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
     alert("Some error occured");
@@ -43,8 +46,8 @@ class App extends React.Component<StoreType> {
         <Navbar />
         <div className="app-wrapper-content">
           <Switch>
-            <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-            <Route path="/messages" render={() => <DialogsContainer />} />
+            <Route path="/profile/:userId?" render={withSuspense(DialogsContainer)} />
+            <Route path="/messages" render={withSuspense(ProfileContainer)} />
             <Route path="/news" component={News} />
             <Route path="/music" component={Music} />
             <Route path="/settings" component={Settings} />
@@ -96,4 +99,16 @@ const ByeMessage: React.FC<MessageType> = (props) => {
 
 const mapStateToProps = (state) => ({ initialized: state.app.initialized });
 
-export default compose(withRouter, connect(mapStateToProps, { getAuthUserData }))(App);
+let AppContainer = compose(withRouter, connect(mapStateToProps, { getAuthUserData }))(App);
+
+let SamuraiJSApp = (props) => {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  );
+};
+
+export default SamuraiJSApp;

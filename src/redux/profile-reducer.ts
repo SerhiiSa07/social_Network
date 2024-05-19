@@ -1,10 +1,12 @@
 import { profileAPI, usersAPI } from "api/api";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = "ADD-POST";
 //const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const DELETE_POST = "DELETE_POST";
+const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
 
 type PostType = {
   id: number;
@@ -76,6 +78,11 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
         ...state,
         posts: state.posts.filter((p) => p.id != action.postId),
       };
+    case SAVE_PHOTO_SUCCESS:
+      return {
+        ...state,
+        profile: { ...state.profile, photos: action.photos },
+      };
     default:
       return state;
   }
@@ -108,6 +115,8 @@ type deletePostType = {
 };
 export const deletePost = (postId: number): deletePostType => ({ type: DELETE_POST, postId });
 
+export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos });
+
 type getUserProfileType = {
   type: typeof SET_STATUS;
   userId: number;
@@ -126,6 +135,24 @@ export const updateStatus = (status: string) => async (dispatch: any) => {
   let response = await profileAPI.updateStatus(status);
   if (response.data.resultCode === 0) {
     dispatch(setStatus(status));
+  }
+};
+
+export const savePhoto = (file: string) => async (dispatch: any) => {
+  let response = await profileAPI.savePhoto(file);
+  if (response.data.resultCode === 0) {
+    dispatch(savePhotoSuccess(response.data.photos));
+  }
+};
+
+export const saveProfile = (profile: string) => async (dispatch: any) => {
+  const userId = getState().auth.userId;
+  let response = await profileAPI.saveProfile(profile);
+
+  if (response.data.resultCode === 0) {
+    dispatch(getUserProfile(userId));
+  } else {
+    dispatch(stopSubmit("edit-profile", { contacts: { facebook: response.data.message[0] } }));
   }
 };
 

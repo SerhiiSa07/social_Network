@@ -1,20 +1,6 @@
 import React from "react";
 import "./index.css";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import App from "./App";
-import { Provider } from "react-redux";
-import { RootStateType, StoreType } from "redux/store";
+import SamuraiJSApp from "./App";
 
-const renderTree = (store: StoreType) => {
-ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App/>
-    </Provider>
-  </BrowserRouter>,
-  document.getElementById("root"),
-);
-
-
-renderTree(store);
+ReactDOM.render(<SamuraiJSApp />, document.getElementById("root"));
