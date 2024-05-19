@@ -85,12 +85,12 @@ const ProfileData = ({ profile, isOwer, goToEditMode }) => {
   );
 };
 
-const Contact = ({ contactTitle, contactValue }) => {
+/*const Contact = ({ contactTitle, contactValue }) => {
   return (
     <div>
       <b>{contactTitle}</b>: {contactValue}
     </div>
   );
-};
+};*/
 
 export default ProfileInfo;
